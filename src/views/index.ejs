@@ -1,0 +1,37 @@
+<div class="uploadPage pt-5 w-100">
+
+    
+    <%if(error){%>
+        <div class="bg-danger p-1 rounded text-white border border-2 border-dark m-auto my-3 w-50">
+            <%=error%>
+        </div>
+    <%}%>
+
+    <form id="fileInput" class="input-group m-auto mb-3 w-50" action="/files" method="post" enctype="multipart/form-data">
+        <input type="file" class="form-control" id="csvFile" name="csvFile" required>
+        <button type="submit" class="input-group-text bg-black text-light rounded-end" for="csvFile">
+            <i class="fa-solid fa-upload me-2"></i>Upload
+        </button>
+
+        
+        
+    </form>
+
+    <div class="d-flex flex-wrap justify-content-center text-light my-5">
+        
+        <%if(files){%>
+            <%files.forEach((file)=>{%>
+                <a href="/files/renderFile?collection=<%=file%>&page=1" class="text-decoration-none text-white focus-ring p-2 bg-dark m-1 rounded w-25">
+                    
+                        <h4>
+                                <i class="fa-solid fa-file-csv mx-1"></i>
+                                <%=file%>
+                        </h4> 
+                    
+                </a>
+
+            <%})%>
+        <%}%>
+
+    </div>
+</div>
